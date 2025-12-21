@@ -27,11 +27,16 @@ public class BFS extends Algorithm {
                 _maxSpace = openList.size();
             }
             Node currentNode = openList.poll();
-            if(_board.getCell(currentNode.getRow(), currentNode.getCol())=='G'){
-                return currentNode;
-            }
+            // if(_board.getCell(currentNode.getRow(), currentNode.getCol())=='G'){
+            //     return currentNode;
+            // }
 
             for(Node kid:createKids(currentNode)){
+                if(_board.getCell(kid.getRow(), kid.getCol())=='G'){
+
+                    return kid;
+
+                }
                 if(!closedList.containsKey(kid)){
                     closedList.put(kid, kid);
                     openList.add(kid);

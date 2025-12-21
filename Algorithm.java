@@ -37,7 +37,7 @@ public abstract class Algorithm {
             directions = new int[]{0,1,2,3,4,5,6,7};
         }
         for(int i:directions){
-            ////////////////////check that r no coming backs
+            
             int newRow = currentRow+_rowDir[i];
             int newCol = currentCol+_colDir[i];
             char cell = _board.getCell(newRow, newCol);
@@ -75,6 +75,10 @@ public abstract class Algorithm {
     private int getMoveCost(int currentRow, int currentCol, int newRow, int newCol, char cell, boolean hasGearUp) {
         
         boolean isDiagonal = (currentRow!= newRow && currentCol!= newCol);
+        if(cell=='G'){
+            //System.out.println("added 5");
+            return 5;
+        }
         if(cell=='^'){
             return isDiagonal ? 10:5;
         }
@@ -82,9 +86,7 @@ public abstract class Algorithm {
             if(!hasGearUp) return -1;
             return 3;
         }
-        if(cell=='G'){
-            return 5;
-        }
+        
         return 1;
     }
 
