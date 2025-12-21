@@ -5,7 +5,6 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 public class Ex1 {
     private static List<String> readInput(String fileName) throws IOException{
@@ -54,7 +53,32 @@ public class Ex1 {
             int rows = Integer.parseInt(rowsAndCols[0]);
             int cols = Integer.parseInt(rowsAndCols[1]);
             Board board = new Board(rows, cols, boardStrings);
+            Algorithm solver = null;
+            if (algo.contains("BFS")) {
+                solver = new BFS(board, side); 
+            }
+            
+            long startTime = System.currentTimeMillis();
+            Node result = solver.solve();
+            long endTime = System.currentTimeMillis();
+            double totalTimeSeconds = (endTime - startTime) / 1000.0;
+            boolean showTime = time.contains("with time");
 
+            // Process Results
+            String pathString = getPath(result);
+            boolean foundPath = (result != null);
+            int cost = foundPath ? result.getG() : 0;
+            int numNodes = solver.getSumOfNodes();
+
+            int maxSpace = 0;
+            if (solver instanceof BFS) {
+                maxSpace = ((BFS) solver).getMaxSpace();
+            }
+
+            if (algo.contains("BFS")) {
+                solver = new BFS(board, side); 
+            }
+            writeOutput(outputString, pathString, numNodes, maxSpace, cost, totalTimeSeconds, showTime, foundPath);
             ///calc
             /// output
             
@@ -62,5 +86,21 @@ public class Ex1 {
         }catch(Exception e){
             e.printStackTrace();
         }
+    }
+    private static String getPath(Node node) {
+        if (node == null) return "no path";
+        
+        StringBuilder sb = new StringBuilder();
+        Node current = node;
+        
+        while (current.getParent() != null) {
+            // Insert action at the beginning (reverse order)
+            if (sb.length() > 0) {
+                sb.insert(0, "-");
+            }
+            sb.insert(0, current.getAction());
+            current = current.getParent();
+        }
+        return sb.toString();
     }
 }

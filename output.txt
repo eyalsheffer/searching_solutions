@@ -1,0 +1,4 @@
+R-R-Ent-U-U
+Num: 53
+Max space: 10
+Cost: 14
