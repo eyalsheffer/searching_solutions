@@ -56,7 +56,9 @@ public class Ex1 {
             Algorithm solver = null;
             if (algo.contains("BFS")) {
                 solver = new BFS(board, side); 
-            }
+            } else if (algo.contains("DFID")) {
+                solver = new DFID(board, side);
+}
             
             long startTime = System.currentTimeMillis();
             Node result = solver.solve();
@@ -71,9 +73,10 @@ public class Ex1 {
             int numNodes = solver.getSumOfNodes();
 
             int maxSpace = 0;
-            if (solver instanceof BFS) {
-                maxSpace = ((BFS) solver).getMaxSpace();
-            }
+            // if (solver instanceof BFS) {
+            //     maxSpace = ((BFS) solver).getMaxSpace();
+            // }
+            maxSpace = solver.getMaxSpace();
 
             if (algo.contains("BFS")) {
                 solver = new BFS(board, side); 

@@ -1,4 +1,5 @@
 R-R-Ent-U-U
-Num: 27
-Max space: 7
+Num: 76
+Max space: 5
 Cost: 14
+0.001 seconds
