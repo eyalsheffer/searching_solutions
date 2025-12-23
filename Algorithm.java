@@ -69,7 +69,7 @@ public abstract class Algorithm {
         return kids;
     }
     public abstract Node solve();
-    protected abstract int huristic(int newRow, int newCol);
+    
     public abstract int getMaxSpace();
 
     private int getMoveCost(int currentRow, int currentCol, int newRow, int newCol, char cell, boolean hasGearUp) {
@@ -88,6 +88,22 @@ public abstract class Algorithm {
         }
         
         return 1;
+    }
+    private int Chevyshev(int startX,int startY,int goalX,int goalY){
+            return(Math.max(Math.abs(startX - goalX), Math.abs(startY - goalY)));
+    }
+    protected  int huristic(int newRow, int newCol){
+        int[] goal = _board.getGoal();
+    
+        int min = Chevyshev(newRow, newCol, goal[0], goal[1]);
+        for(List<int[]> tunnels : _board.getunnels().values()){
+            int[] side1 = tunnels.get(0);
+            int[] side2 = tunnels.get(1);
+            int direction1 = Chevyshev(newRow, newCol, side1[0], side1[1]) + 2 + Chevyshev(side2[0], side2[1], goal[0], goal[1]);
+            int direction2 = Chevyshev(newRow, newCol, side2[0], side2[1]) + 2 + Chevyshev(side1[0], side1[1], goal[0], goal[1]);
+            min = Math.min(min,Math.min(direction1, direction2));
+        }
+        return min;
     }
 
 }

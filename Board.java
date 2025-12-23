@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class Board {
     private char[][] _gameBoard;
@@ -74,6 +75,9 @@ public class Board {
     }
     public int getcols(){
         return _cols;
+    }
+    public Map<Character, List<int[]>> getunnels(){
+        return _tunnels;
     }
     
 }
