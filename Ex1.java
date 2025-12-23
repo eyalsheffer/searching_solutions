@@ -60,6 +60,8 @@ public class Ex1 {
                 solver = new DFID(board, side);
             }else if (algo.contains("A*")) {
                 solver = new AStar(board, side);
+            }else if (algo.contains("IDA*")) {
+                solver = new IDAStar(board, side);
             }
             
             long startTime = System.currentTimeMillis();

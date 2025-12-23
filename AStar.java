@@ -21,7 +21,7 @@ public class AStar extends Algorithm{
         openList.add(startNode);
         nodeMap.put(startNode, startNode);
         while (!openList.isEmpty()){
-            if (nodeMap.size()>_maxSpace) {
+            if (openList.size()>_maxSpace) {
                 _maxSpace = nodeMap.size();
             }
             Node current = openList.poll();
