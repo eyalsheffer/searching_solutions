@@ -58,7 +58,9 @@ public class Ex1 {
                 solver = new BFS(board, side); 
             } else if (algo.contains("DFID")) {
                 solver = new DFID(board, side);
-}
+            }else if (algo.contains("A*")) {
+                solver = new AStar(board, side);
+            }
             
             long startTime = System.currentTimeMillis();
             Node result = solver.solve();

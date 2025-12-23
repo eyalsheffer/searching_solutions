@@ -1,5 +1,5 @@
-DFID
-counter-clockwise
+A*
+clockwise
 with time
 no open
 10x9
