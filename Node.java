@@ -7,6 +7,7 @@ public class Node implements Comparable<Node>{// implement for an option to over
     private final boolean _hasGearUp;
     private final Node _parent;
     private final String _action;//how did we get here
+   
 
     //heurstic purpuses 
     private int _g;
@@ -14,6 +15,7 @@ public class Node implements Comparable<Node>{// implement for an option to over
     private int _f;
 
     //tie breakers
+     public static boolean compareNewFirst = false;
     private final int _creationTime;
     private static int _globalCounter = 0;
 
@@ -55,8 +57,17 @@ public class Node implements Comparable<Node>{// implement for an option to over
     }
     
     @Override
-    public int compareTo(Node other){//for priority queue
-        return Double.compare(this._f, other._f);
+    public int compareTo(Node other){//for priority queues
+        //return Integer.compare(this._f, other._f);
+        int compareByF = Integer.compare(this._f, other._f);
+        if (compareByF!=0) {
+            return compareByF;
+        }
+        if (compareNewFirst) {
+            return Integer.compare(other._creationTime, this._creationTime);
+        } else {
+            return Integer.compare(this._creationTime, other._creationTime);
+        }
     }
     public static void resetGlobalCounter(){
         _globalCounter = 0;
