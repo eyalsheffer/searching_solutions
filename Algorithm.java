@@ -14,7 +14,7 @@ public abstract class Algorithm {
     public Algorithm(Board board, String order){
         this._board = board;
         this._order = order;
-        if (order.contains("first-new")) {
+        if (order.contains("new-first")) {
             Node.compareNewFirst = true;
         } else {
             Node.compareNewFirst = false;

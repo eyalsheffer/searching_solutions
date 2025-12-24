@@ -53,6 +53,7 @@ public class Ex1 {
             int rows = Integer.parseInt(rowsAndCols[0]);
             int cols = Integer.parseInt(rowsAndCols[1]);
             Board board = new Board(rows, cols, boardStrings);
+           
             Algorithm solver = null;
             if (algo.contains("BFS")) {
                 solver = new BFS(board, side); 
@@ -65,7 +66,7 @@ public class Ex1 {
             }else if (algo.contains("DFBnB")) {
                 solver = new DFBnB(board, side);
             }
-            
+             System.out.println("Tie Breaker Mode: " + (Node.compareNewFirst ? "New-First (LIFO)" : "Old-First (FIFO)"));
             long startTime = System.currentTimeMillis();
             Node result = solver.solve();
             long endTime = System.currentTimeMillis();
