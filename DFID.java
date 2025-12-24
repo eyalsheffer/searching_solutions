@@ -5,8 +5,8 @@ public class DFID extends Algorithm{
     private static final Node _limitReached = new Node(-1,-1,false,null,"",0,0);//this w'll be the node ill return where ill reach the limit
     private int _maxSpace = 0;
 
-    public DFID(Board board, String order){
-        super(board, order);
+    public DFID(Board board, String order,String openMode){
+        super(board, order,openMode);
     }
     
     @Override
@@ -29,6 +29,9 @@ public class DFID extends Algorithm{
     }
 
     private Node limitedDFS(Node n, int limit, Map<Node,Node> hashMap) {
+        if (_withOpen) {
+            System.out.println("Open List: " + hashMap.keySet());
+        }
         if(_board.getCell(n.getRow(), n.getCol())=='G'){
             return n;
         }

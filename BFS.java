@@ -6,8 +6,8 @@ import java.util.Map;
 public class BFS extends Algorithm {
     private int _maxSpace = 0;
 
-    public BFS(Board board, String order){
-        super(board, order);
+    public BFS(Board board, String order,String openMode){
+        super(board, order,openMode);
     }
     @Override
     protected int huristic(int newRow, int newCol){
@@ -23,6 +23,9 @@ public class BFS extends Algorithm {
         openList.add(startNode);
         closedList.put(startNode,startNode);
         while (!openList.isEmpty()) {
+            if (_withOpen) {
+                System.out.println("Open List: " + openList);
+            }
             if(openList.size() > _maxSpace){
                 _maxSpace = openList.size();
             }

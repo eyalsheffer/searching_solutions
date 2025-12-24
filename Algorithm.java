@@ -4,6 +4,7 @@ import java.util.List;
 public abstract class Algorithm {
     protected Board _board;
     protected String _order;
+    protected boolean _withOpen;
     protected int _sumOfNodes = 0;
     //for every dir the prograss matches including the name of the actions and in order of clock wise
     //for counter clock wise i'll just change the order
@@ -11,9 +12,10 @@ public abstract class Algorithm {
     protected final int[] _colDir = {1,1,0,-1,-1,-1,0,1};
     protected final String[] _action = {"R","RD","D","LD","L","LU","U","RU"};
 
-    public Algorithm(Board board, String order){
+    public Algorithm(Board board, String order, String openMode){
         this._board = board;
         this._order = order;
+        this._withOpen = openMode.contains("with open");
         if (order.contains("new-first")) {
             Node.compareNewFirst = true;
         } else {

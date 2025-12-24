@@ -72,4 +72,8 @@ public class Node implements Comparable<Node>{// implement for an option to over
     public static void resetGlobalCounter(){
         _globalCounter = 0;
     }
+    @Override
+    public String toString() {
+        return "(" + _row + "," + _col + ")";
+    }
 }

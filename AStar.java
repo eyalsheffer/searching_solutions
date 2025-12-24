@@ -5,8 +5,8 @@ import java.util.Queue;
 
 public class AStar extends Algorithm{
     private int _maxSpace = 0;
-    public AStar(Board board, String order) {
-        super(board, order);
+    public AStar(Board board, String order, String openMode) {
+        super(board, order, openMode);
     }
     @Override
     public int getMaxSpace() {
@@ -21,6 +21,9 @@ public class AStar extends Algorithm{
         openList.add(startNode);
         nodeMap.put(startNode, startNode);
         while (!openList.isEmpty()){
+            if (_withOpen) {
+                System.out.println("Open List: " + openList);
+            }
             if (openList.size()>_maxSpace) {
                 _maxSpace = nodeMap.size();
             }

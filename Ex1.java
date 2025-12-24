@@ -56,15 +56,15 @@ public class Ex1 {
            
             Algorithm solver = null;
             if (algo.contains("BFS")) {
-                solver = new BFS(board, side); 
+                solver = new BFS(board, side,open); 
             } else if (algo.contains("DFID")) {
-                solver = new DFID(board, side);
+                solver = new DFID(board, side,open);
             }else if (algo.contains("A*")) {
-                solver = new AStar(board, side);
+                solver = new AStar(board, side,open);
             }else if (algo.contains("IDA*")) {
-                solver = new IDAStar(board, side);
+                solver = new IDAStar(board, side,open);
             }else if (algo.contains("DFBnB")) {
-                solver = new DFBnB(board, side);
+                solver = new DFBnB(board, side,open);
             }
              System.out.println("Tie Breaker Mode: " + (Node.compareNewFirst ? "New-First (LIFO)" : "Old-First (FIFO)"));
             long startTime = System.currentTimeMillis();
@@ -80,17 +80,8 @@ public class Ex1 {
             int numNodes = solver.getSumOfNodes();
 
             int maxSpace = 0;
-            // if (solver instanceof BFS) {
-            //     maxSpace = ((BFS) solver).getMaxSpace();
-            // }
             maxSpace = solver.getMaxSpace();
-
-            if (algo.contains("BFS")) {
-                solver = new BFS(board, side); 
-            }
             writeOutput(outputString, pathString, numNodes, maxSpace, cost, totalTimeSeconds, showTime, foundPath);
-            ///calc
-            /// output
             
 
         }catch(Exception e){

@@ -10,8 +10,8 @@ import java.util.Stack;
 public class DFBnB extends Algorithm {
     int _maxSpace = 0;
     private static final int INF = Integer.MAX_VALUE;
-    public DFBnB(Board board, String order) {
-        super(board, order);
+    public DFBnB(Board board, String order,String openMode) {
+        super(board, order,openMode);
     }
     @Override
     public int getMaxSpace() {
@@ -29,6 +29,9 @@ public class DFBnB extends Algorithm {
         Node result = null;
         int treshold = INF;////
         while(!stack.isEmpty()){
+            if (_withOpen) {
+                System.out.println("Open List: " + stack);
+            }
             if (hashMap.size() > _maxSpace) {
                 _maxSpace = hashMap.size();
             }

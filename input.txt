@@ -1,7 +1,7 @@
-A*
+DFBnB
 clockwise new-first
 with time
-no open
+with open
 10x9
 #########
 S-1--####

@@ -8,8 +8,8 @@ public class IDAStar extends Algorithm{
 
     private int _maxSpace = 0;
     private static final int INF = Integer.MAX_VALUE;
-    public IDAStar(Board board, String order){
-        super(board,order);
+    public IDAStar(Board board, String order,String openMode){
+        super(board,order,openMode);
     }
     @Override
     public int getMaxSpace(){
@@ -31,6 +31,9 @@ public class IDAStar extends Algorithm{
             stack.push(startNode);
             hashMap.put(startNode, startNode);
             while (!stack.isEmpty()) {
+                if (_withOpen) {
+                    System.out.println("Open List: " + stack);
+                }
                 if(hashMap.size() > _maxSpace){
                     _maxSpace = hashMap.size();
                 } 
