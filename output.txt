@@ -1,5 +1,5 @@
 R-R-Ent-U-U
-Num: 107
-Max space: 33
+Num: 8141177
+Max space: 62
 Cost: 14
-0.002 seconds
+1.259 seconds

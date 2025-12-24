@@ -62,6 +62,8 @@ public class Ex1 {
                 solver = new AStar(board, side);
             }else if (algo.contains("IDA*")) {
                 solver = new IDAStar(board, side);
+            }else if (algo.contains("DFBnB")) {
+                solver = new DFBnB(board, side);
             }
             
             long startTime = System.currentTimeMillis();
